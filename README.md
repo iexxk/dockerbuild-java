@@ -45,7 +45,7 @@ services:
   app:
     restart: always
     #新编译的镜像名
-    image: extentTomcat:latest
+    image: extentJava:latest
    # volumes:
    #   - /logs/ygl-app:/app/log
 #    environment:
