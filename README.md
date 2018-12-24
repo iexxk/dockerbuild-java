@@ -16,6 +16,7 @@ Tags:
 #### 功能
 
 1. 添加中国时区
+2. 添加字体(默认添加宋体)
 
 #### 使用
 
@@ -23,12 +24,14 @@ Tags:
 
 ```dockerfile
 #基础镜像选择alpine 小巧安全流行方便
-FROM exxk/java:8-jre-alpine-cst
+FROM exxk/java:8-jre-alpine-cst-font
 #复制固定路径下打包好的jar包(target/*.jar)并重命名到容器跟目录(/app.jar)，或ADD
 COPY target/service.jar app.jar
 COPY target/lib lib
 #健康检查 -s 静默模式，不下载文件
 #HEALTHCHECK CMD wget -s http://127.0.0.1:14030/actuator/health || exit 1
+#添加其他字体，放入这个目录,也可以直接在基础镜像里面添加
+#COPY chinese /usr/share/fonts/chinese
 #启动容器执行的命令 java -jar app.jar ,如果加其他参数加 ,"-参数",
 CMD ["java","-jar","app.jar"]
 ```
