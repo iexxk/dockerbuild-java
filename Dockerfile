@@ -4,5 +4,5 @@ FROM java:8-jre-alpine
 RUN apk add --no-cache tzdata python py-pip \
 	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && pip install requests
+    && pip install requests bs4
 
