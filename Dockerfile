@@ -26,6 +26,7 @@ RUN set -x \
 	&& apk add --no-cache tzdata python3 tesseract-ocr \
 #	&& curl -O https://bootstrap.pypa.io/get-pip.py \
 	&& python3 get-pip.py \
+        && rm -rf get-pip.py \
 	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone \
         && pip install requests bs4
