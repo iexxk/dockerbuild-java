@@ -17,12 +17,14 @@ ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openj
 ENV JAVA_VERSION 8u242
 ENV JAVA_ALPINE_VERSION 8.242.08-r2
 
+COPY get-pip.py .
+
 RUN set -x \
 	&& apk add --no-cache \
 		openjdk8-jre="$JAVA_ALPINE_VERSION" \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ] \
 	&& apk add --no-cache tzdata python3 tesseract-ocr \
-	&& curl -O https://bootstrap.pypa.io/get-pip.py \
+#	&& curl -O https://bootstrap.pypa.io/get-pip.py \
 	&& python3 get-pip.py \
 	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone \
