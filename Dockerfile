@@ -4,6 +4,7 @@
 FROM java:8-jre-alpine
 RUN  apk add --no-cache tzdata ttf-dejavu \
 	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && echo "Asia/Shanghai" > /etc/timezone
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && wget https://raw.githubusercontent.com/eficode/wait-for/v2.1.0/wait-for
 COPY chinese /usr/share/fonts/chinese
 
